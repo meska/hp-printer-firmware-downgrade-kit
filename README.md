@@ -1,13 +1,25 @@
 # HP Printer Firmware Downgrade Kit
 
-Downgrade HP OfficeJet Pro 7740 firmware to version **1849A** to restore compatibility with third-party and refurbished ink cartridges.
+Downgrade selected HP OfficeJet Pro firmware versions to restore compatibility
+with third-party and refurbished ink cartridges.
 
-HP pushes firmware updates that block non-HP cartridges via "dynamic security". This repo contains the tools and instructions to reverse that.
+HP pushes firmware updates that block non-HP cartridges via "dynamic security".
+This repo contains firmware files and step-by-step instructions to reverse that
+on supported models.
 
 ## What's Included
 
-- `OJP7740_1849A.ful2` — firmware file (v1849A, 60 MB)
-- `Downgrade_Guide.md` — detailed step-by-step guide (human and agent-readable)
+- `OJP7740_1849A.ful2` — HP OfficeJet Pro 7740 firmware file (v1849A, 60 MB)
+- `OJP7730_1851A.ful2` — HP OfficeJet Pro 7730 firmware file (v1851A, 75 MB)
+- `Downgrade_Guide.md` — detailed guide for the HP OfficeJet Pro 7740
+- `Downgrade_Guide_7730.md` — detailed guide for the HP OfficeJet Pro 7730
+
+## Supported Models
+
+| Model | Firmware family | Target version | Guide | Firmware file |
+|---|---|---|---|---|
+| HP OfficeJet Pro 7740 | `EDWINXPP1N002` | `1849A` | `Downgrade_Guide.md` | `OJP7740_1849A.ful2` |
+| HP OfficeJet Pro 7730 | `ELLISXLP1N003` | `1851A` | `Downgrade_Guide_7730.md` | `OJP7730_1851A.ful2` |
 
 ## How It Works
 
@@ -21,9 +33,10 @@ That's it. Three steps, no special software needed — just `curl` and `nc` (net
 
 You don't need to be technical. Open any AI coding agent that has terminal access and tell it:
 
-> Read the file Downgrade_Guide.md and help me downgrade my HP OfficeJet Pro 7740 printer. My printer IP is 192.168.1.XXX.
+> Read the appropriate guide in this repo and help me downgrade my HP OfficeJet Pro 7730 or 7740 printer. My printer IP is 192.168.1.XXX.
 
-The guide is written so that an AI agent can follow it step by step, run the commands for you, and verify the result.
+The guides are written so that an AI agent can follow them step by step, run
+the commands for you, and verify the result.
 
 Examples of free coding agents that can do this:
 - [Gemini CLI](https://github.com/google-gemini/gemini-cli) (free)
@@ -31,15 +44,20 @@ Examples of free coding agents that can do this:
 
 ## Firmware Downloads
 
-If you need to download the firmware `.exe` or `.dmg` for the OJP7740 (or other HP models):
+If you need to download the original HP firmware `.exe` or `.dmg` for these
+models (or other HP printers):
 
+- https://www.healthy-computers.com/HP/OJP7730.htm
 - https://www.healthy-computers.com/HP/OJP7740.htm
 - https://ybtoner.com/how-to-downgrade-hp-printer-firmware/
 - https://printcopytech.net/download/hp-officejet-pro-7740-firmware-version-1849a/
 
 ## Adapting to Other HP Printers
 
-The `Downgrade_Guide.md` includes a section on extracting `.ful2` firmware files from any HP firmware `.exe` installer using a Python script. The recovery mode API and flashing method work across HP models that support the LEDM interface.
+The included guides explain how to extract `.ful2` firmware files from HP
+firmware `.exe` installers. The recovery mode API and flashing method work
+across HP models that support the LEDM interface, but the firmware file must
+match the printer family exactly.
 
 ## Disclaimer
 
